@@ -6,7 +6,7 @@
         exit;
     }
 
-    $join_id = $_POST['join_id'];
+    $join_id = $_POST['decide_id'];
     $join_pw = $_POST['join_pw'];
     $join_name = $_POST['join_name'];
     $join_phone = $_POST['join_phone'];
