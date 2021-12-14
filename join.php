@@ -30,27 +30,42 @@
                 document.getElementById("join_button").disabled = true
                 document.getElementById("check_button").value = "ID 중복 검사"
                 document.getElementById("check_button").setAttribute("onclick", "check_id()")
+                join_form = document.getElementById("join_form")
+                join_form.elements[0].focus();
             }
             function find_address(){
                 url = "address.php";
                 window.open(url,"address",'width=500, height=400, scrollbars=no, resizable=no');
+            }
+            function check_pw(){
+                var pw = document.getElementById("pw").value
+                var pw2 = document.getElementById("pw2").value
+                if(pw==pw2){
+                    document.getElementById("join_form").submit();
+                }else{
+                    window.alert("비밀번호가 일치하지 않습니다!")
+                    document.getElementById("pw2").value = ""
+                    join_form = document.getElementById("join_form")
+                    join_form.elements[4].focus();
+                }
             }
         </script>
     </head>
     <body>
         <h2>회원가입</h2>
         <?php if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) { ?>
-        <form method="post" action="join_ok.php" autocomplete="off">
-            <p>아이디: <input type="text" name="join_id" id="id" required></p>
+        <form id="join_form" method="post" action="join_ok.php" autocomplete="off">
+            <p>아이디: <input type="text" name="join_id" id="id" autofocus required></p>
             <input type="hidden" name="decide_id" id="decide_id">
             <p><span id="decide" style='color:red;'>ID 중복 여부를 확인해주세요.</span>
             <input type="button" id="check_button" value="ID 중복 검사" onclick="check_id();"></p>
-            <p>비밀번호: <input type="password" name="join_pw" required></p>
+            <p>비밀번호: <input type="password" name="join_pw" id="pw" required></p>
+            <p>비밀번호 확인: <input type="password" name="join_pw2" id="pw2" required></p>
             <p>이름: <input type="text" name="join_name" required></p>
-            <p>연락처: <input type="text" name="join_phone" required></p>
-            <p>Email: <input type="email" name="join_email" required></p>
-            <p>주소: <input type="text" name="join_address" id="address" onclick="find_address();" placeholder="주소를 검색해주세요." required></p>
-            <p><input type="submit" value="가입하기" id="join_button" disabled=true></p>
+            <p>연락처: <input type="text" name="join_phone"></p>
+            <p>Email: <input type="email" name="join_email"></p>
+            <p>주소: <input type="text" name="join_address" id="address" onclick="find_address();" placeholder="주소를 검색해주세요."></p>
+            <p><input type="button" value="가입하기" id="join_button" onclick="check_pw();" disabled=true></p>
         </form>
         <small><a href="login.php">이미 회원이신가요?</a><small>
         <?php } else {
