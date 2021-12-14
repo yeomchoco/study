@@ -5,8 +5,7 @@
         <meta charset="UTF-8">
         <title>Join</title>
         <script>
-            function address(){
-                alert("눌렸다!");
+            function find_address(){
                 url = "address.php";
                 window.open(url,"address",'width=500, height=400, scrollbars=no, resizable=no');
             }
@@ -21,7 +20,7 @@
             <p>이름: <input type="text" name="join_name" required></p>
             <p>연락처: <input type="text" name="join_phone" required></p>
             <p>Email: <input type="email" name="join_email" required></p>
-            <p>주소: <input type=button value=쫌 name="join_address" id="address" onclick="address();" placeholder="주소를 검색해주세요." required></p>
+            <p>주소: <input type="text" name="join_address" id="address" onclick="find_address();" placeholder="주소를 검색해주세요." required></p>
             <p><input type="submit" value="가입하기"></p>
         </form>
         <small><a href="login.php">이미 회원이신가요?</a><small>

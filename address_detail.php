@@ -18,7 +18,7 @@
     </script> 
 </head>
 <body>
-    <input id="detail" type=text>
+    <br><input id="detail" type=text>
     <input type=button value="확인" onclick="my_addr()">
 </body>
 </html>
