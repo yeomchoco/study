@@ -7,9 +7,11 @@
 </head>
 <body>
     <h1>MAIN</h1>
+    <a href="board.php">게시판</a>
+    <a href="qna.php">문의글</a>
+    <a href="mypage.php">마이페이지</a>
     <?php
         if(!isset($_SESSION['id']) || !isset($_SESSION['name'])) {
-            echo "<p>로그인을 해 주세요.</p>";
             echo "<p><button onclick=\"window.location.href='login.php'\">로그인</button> <button onclick=\"window.location.href='join.php'\">회원가입</button></p>";
         } else {
             $user_id = $_SESSION['id'];

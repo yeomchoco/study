@@ -61,13 +61,13 @@
         <h2>회원가입</h2>
         <?php if(!isset($_SESSION['user_id']) || !isset($_SESSION['user_name'])) { ?>
         <form id="join_form" method="post" action="join_ok.php" autocomplete="off">
-            <p>아이디: <input type="text" name="join_id" id="id" autofocus required></p>
+            <p>아이디: <input type="text" name="join_id" id="id" autofocus></p>
             <input type="hidden" name="decide_id" id="decide_id">
             <p><span id="decide" style='color:red;'>ID 중복 여부를 확인해주세요.</span>
             <input type="button" id="check_button" value="ID 중복 검사" onclick="check_id();"></p>
-            <p>비밀번호: <input type="password" name="join_pw" id="pw" required></p>
-            <p>비밀번호 확인: <input type="password" name="join_pw2" id="pw2" required></p>
-            <p>이름: <input type="text" name="join_name" id="name" required></p>
+            <p>비밀번호: <input type="password" name="join_pw" id="pw"></p>
+            <p>비밀번호 확인: <input type="password" name="join_pw2" id="pw2"></p>
+            <p>이름: <input type="text" name="join_name" id="name"></p>
             <p>연락처: <input type="text" name="join_phone"></p>
             <p>Email: <input type="email" name="join_email"></p>
             <p>주소: <input type="text" name="join_address" id="address" onclick="find_address();" placeholder="주소를 검색해주세요."></p>
