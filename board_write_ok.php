@@ -2,7 +2,7 @@
     session_start();
     if(!isset($_SESSION['id']) || !isset($_SESSION['name'])) {
         echo "<script>alert('비회원입니다!');";
-        echo "window.location.replace('main.php');</script>";
+        echo "window.location.replace('login.php');</script>";
     }
 
     $title = $_POST['title'];
