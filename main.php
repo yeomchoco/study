@@ -4,12 +4,19 @@
 <head>
     <meta charset="UTF-8">
     <title>Main</title>
+    <script>
+        function auth(){
+            var id = '<?=$_SESSION['id']?>';
+            url = "mypage_check.php?id="+id;
+            window.open(url,"auth","width=600,height=400");
+        }
+    </script>
 </head>
 <body>
     <h1>MAIN</h1>
     <a href="board.php">게시판</a>
     <a href="qna.php">문의글</a>
-    <a href="mypage.php">마이페이지</a>
+    <a href="javascript:void(0);" onclick="auth();">마이페이지</a>
     <?php
         if(!isset($_SESSION['id']) || !isset($_SESSION['name'])) {
             echo "<p><button onclick=\"window.location.href='login.php'\">로그인</button> <button onclick=\"window.location.href='join.php'\">회원가입</button></p>";

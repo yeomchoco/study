@@ -42,17 +42,22 @@
                 var pw2 = document.getElementById("pw2").value
                 var name = document.getElementById("name").value
                 join_form = document.getElementById("join_form")
-                if(pw==pw2){
-                    if(name){
-                        join_form.submit();
-                    }else{
-                        window.alert("이름을 입력해주세요!")
-                        join_form.elements[5].focus();
-                    }
+                if(!pw){
+                    window.alert("비밀번호를 입력해주세요!")
+                    join_form.elements[3].focus();
                 }else{
-                    window.alert("비밀번호가 일치하지 않습니다!")
-                    document.getElementById("pw2").value = ""
-                    join_form.elements[4].focus();
+                    if(pw==pw2){
+                        if(name){
+                            join_form.submit();
+                        }else{
+                            window.alert("이름을 입력해주세요!")
+                            join_form.elements[5].focus();
+                        }
+                    }else{
+                        window.alert("비밀번호가 일치하지 않습니다!")
+                        document.getElementById("pw2").value = ""
+                        join_form.elements[4].focus();
+                    }
                 }
             }
         </script>

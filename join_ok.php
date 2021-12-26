@@ -1,5 +1,4 @@
 <?php
-
     $join_id = $_POST['decide_id'];
     $join_pw = $_POST['join_pw'];
     $join_name = $_POST['join_name'];
@@ -9,12 +8,10 @@
 
     $conn= mysqli_connect('localhost', 'choco', '7173', 'study');
     
-    $multi = "
+    $sql = "
         INSERT INTO member(id, pw, name, phone, email, address, created) VALUES ('{$join_id}', '{$join_pw}', '{$join_name}', '{$join_phone}', '{$join_email}', '{$join_address}',  now());
-        SET @COUNT = 0;
-        UPDATE member SET idx = @COUNT:=@COUNT+1;
     ";
-    $res = mysqli_multi_query($conn,$multi);
+    $res = mysqli_query($conn,$sql);
 
     if($res){
         echo "<script>alert('회원가입이 완료되었습니다.');";

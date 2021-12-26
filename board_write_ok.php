@@ -5,13 +5,13 @@
         echo "window.location.replace('login.php');</script>";
     }
 
+    include 'db.inc';
     $title = $_POST['title'];
     $content = $_POST['content'];
     $id = $_SESSION['id'];
     $name = $_SESSION['name'];
-    $conn = mysqli_connect('localhost', 'choco', '7173', 'study');
 
-    $sql = "INSERT INTO board(title, content, id, name, file, liked, hit, created) VALUES ('$title', '$content', '$id', '$name', '$filename', 0, 0, now());";
+    $sql = "INSERT INTO board(title, content, id, name, file, hit, created) VALUES ('$title', '$content', '$id', '$name', '$filename', 0, now());";
 
     $res = mysqli_query($conn, $sql);
 

@@ -6,7 +6,7 @@
 </head>
 <body>
 <?php
-    $conn= mysqli_connect('localhost', 'choco', '7173', 'study');
+    include 'db.inc';
     
     $address= $_GET['address'];
     $arr= explode(" ",$address);

@@ -2,27 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Board</title>
-    <script>
-        function info() {
-            var opt = document.getElementById("search_opt");
-            var opt_val = opt.options[opt.selectedIndex].value;
-            var info = ""
-            if (opt_val=='title'){
-                info = "제목을 입력하세요.";
-            } else if (opt_val=='content'){
-                info = "내용을 입력하세요.";
-            } else if (opt_val=='name'){
-                info = "작성자를 입력하세요.";
-            }
-            document.getElementById("search_box").placeholder = info;
-        }
-    </script>
+    <title>My Post</title>
 </head>
 <body>
-    <button onclick="window.location.href='main.php'">메인으로</button> 
-    <div><h2>게시판</h2></div>
-    <button onclick="window.location.href='board_write.php'">글쓰기</button>
+    <button onclick="window.location.href='mypage.php'">마이페이지</button> 
+    <div><h2>내가 작성한 글</h2></div>
     <table class=middle>
         <thead>
             <tr align=center>
@@ -36,6 +20,9 @@
        </thead>
        <?php
             include 'db.inc';
+            session_start();
+
+            $id = $_SESSION['id'];
             
             if(isset($_GET['page'])){
                 $page = $_GET['page'];
@@ -43,7 +30,7 @@
                 $page = 1;
             }
 
-            $sql = "SELECT * FROM board";
+            $sql = "SELECT * FROM board WHERE id='$id'";
             $res = mysqli_query($conn, $sql);
 
             $total_post = mysqli_num_rows($res);
@@ -52,7 +39,7 @@
             $start = ($page-1)*$per + 1;
             $start -= 1;
 
-            $sql2 = "SELECT * FROM board ORDER BY idx DESC limit $start, $per";
+            $sql2 = "SELECT * FROM board WHERE id='$id' ORDER BY idx DESC limit $start, $per";
             $res2 = mysqli_query($conn, $sql2);
 
             while($row = mysqli_fetch_array($res2)){
@@ -78,32 +65,18 @@
             $page_num = 1;
             
             if($page > 1){
-                echo "<a href=\"board.php?page=1\">◀ </a>";
+                echo "<a href=\"mypage_post.php?page=1\">◀ </a>";
             }
             while($page_num <= $total_page){
                 if($page==$page_num){
-                    echo "<a style=\"color:hotpink;\" href=\"board.php?page=$page_num\">$page_num </a>";
+                    echo "<a style=\"color:hotpink;\" href=\"mypage_post.php?page=$page_num\">$page_num </a>";
                 } else {
-                    echo "<a href=\"board.php?page=$page_num\">$page_num </a>"; }
+                    echo "<a href=\"mypage_post.php?page=$page_num\">$page_num </a>"; }
                 $page_num++;
             }
             if($page < $total_page){
-                echo "<a href=\"board.php?page=$total_page\">▶</a>";
+                echo "<a href=\"mypage_post.php?page=$total_page\">▶</a>";
             }
         ?>
-        <form method="get" action="board_search.php">
-            <select name="cate" id="search_opt" onchange="info()">
-                    <option value=title>제목</option>
-                    <option value=content>내용</option>
-                    <option value=name>작성자</option>
-            </select>
-            <input type=text name=search id="search_box" autocomplete="off" placeholder="제목을 입력하세요." required>
-            <input type=submit value=검색>
-                <p>
-                    <input type=date name=date1>
-                    ~
-                    <input type=date name=date2>
-                </p>
-        </form>
 </body>
 </html>
