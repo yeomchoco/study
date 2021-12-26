@@ -40,7 +40,9 @@
     제목 : <?=$res['title']?><br>
     작성자 : <?=$res['name']?><br>
     <hr>
+    <img width=480px src="../file/upload/<?=$res['file']?>"><br>
     내용 : <?=$res['content']?><br>
+    <p><a href="../file/upload/<?=$res['file'];?>"download><?=$res['file'];?></a></p>
     <hr>
     작성일 : <?=$res['created']?><br>
     조회수 : <?=$hit?><br>
