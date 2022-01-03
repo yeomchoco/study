@@ -55,6 +55,7 @@
             color:white;
             background-color:black;
             padding:8px;
+            z-index:1;
         }
         ul {
             list-style:none;
@@ -73,12 +74,13 @@
             margin:0;
             height:2px;
         }
-        #wrapper {
+        .wrapper {
             width:1200px;
             margin:auto;
             text-align:center;
             position:relative;
-            top:0.7%;
+            top:0.35%;
+            z-index:-1;
         }
         .footer {
             float:left;
@@ -88,13 +90,13 @@
             background-color:black;
             padding:16px;
             position:relative;
-            top:0.9%;
+            top:0.2%;
             font-size:23px;
         }
         .btn {
             text-align:right;
             position:relative;
-            top:1.7%;
+            top:0.6%;
         }
         button {
             background-color:black;
@@ -117,7 +119,7 @@
             <li><a href="javascript:void(0);" onclick="auth();">Mypage</a></li>
         </ul>
     </div>
-    <div id=wrapper>
+    <div class=wrapper>
         <img src="catdog.gif" width="1200px;">
     </div>
     <div class=footer>

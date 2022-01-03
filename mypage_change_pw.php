@@ -2,9 +2,9 @@
     include 'db.inc';
     session_start();
 
-    $pw0 = $_POST['pw0'];
-    $pw1 = $_POST['pw1'];
-    $pw2 = $_POST['pw2'];
+    $pw0 = $_POST['pw0']; #현재 비밀번호
+    $pw1 = $_POST['pw1']; #새로운 PW1
+    $pw2 = $_POST['pw2']; #새로운 PW2
     $id = $_SESSION['id'];
     $sql = "SELECT * FROM member WHERE id='$id'";
     $res = mysqli_fetch_array(mysqli_query($conn, $sql));

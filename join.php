@@ -162,7 +162,7 @@
             font-size:23px;
         }
         input {
-            width:350px;
+            width:370px;
             padding:10px;
             border:none;
             box-shadow: 0 0 5px 3px lightgray;
@@ -173,7 +173,7 @@
         }
         table {
             border-collapse: collapse;
-            width:530px;
+            width:498px;
         }
         th, td {
             border:1px solid black;
@@ -182,7 +182,6 @@
         th {
             color:white;
             font-size:20px;
-            width:100px;
             background-color:black;
         }
         td {
