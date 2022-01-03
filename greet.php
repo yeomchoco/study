@@ -31,7 +31,7 @@
         .box {
             position:absolute;
             top:50%; left:50%;
-            width:1200px; height:650px;
+            width:1200px; height:800px;
             margin-left:-600px;
             margin-top:-460px;
             /* border:10px solid black; */
@@ -39,7 +39,7 @@
         }
         h1 {
             font-size:45px;
-            width:1170px;
+            width:1170px;;
             margin:0 0;
             margin-right:0px;
             margin-top:1px;
@@ -74,11 +74,24 @@
             height:2px;
         }
         #wrapper {
-            width:1200px;
+            width:500px;
             margin:auto;
             text-align:center;
             position:relative;
-            top:0.7%;
+            top:35%;
+        }
+        .info {
+            font-size:55px;
+            line-height:50px;
+            position:relative;
+        }
+        button {
+            background-color:black;
+            color:white;
+            font-size:15px;
+            width:90px;
+            height:25px;
+            margin-bottom:7px;
         }
         .footer {
             float:left;
@@ -88,27 +101,14 @@
             background-color:black;
             padding:16px;
             position:relative;
-            top:0.9%;
+            top:79.4%;
             font-size:23px;
-        }
-        .btn {
-            text-align:right;
-            position:relative;
-            top:1.7%;
-        }
-        button {
-            background-color:black;
-            color:white;
-            font-size:15px;
-            width:80px;
-            height:25px;
-            margin-bottom:7px;
         }
     </style>
 </head>
 <body>
 <div class=box>
-    <h1><a href=main.php>my web</a></h1>
+    <h1><a href="main.php">my web</a></h1>
     <hr>
     <div class=nav>
         <ul>
@@ -118,27 +118,19 @@
         </ul>
     </div>
     <div id=wrapper>
-        <img src="catdog.gif" width="1200px;">
-    </div>
-    <div class=footer>
+    <div class=info>WELCOME</div>
     <?php
         if(!isset($_SESSION['id']) || !isset($_SESSION['name'])) {
-            echo "비회원으로 접속중입니다";
+            echo "<button onclick=\"window.location.href='login.php'\">로그인</button> <button onclick=\"window.location.href='join.php'\">회원가입</button><br><a href='main.php' style='color:black;font-size:15px;'>ELSE, 비회원으로 계속하기</a>";
         } else {
             $user_id = $_SESSION['id'];
             $user_name = $_SESSION['name'];
-            echo "$user_name($user_id)님 안녕하세요";
+            echo "<p>$user_name($user_id)님 환영합니다!</p><button onclick=\"window.location.href='logout.php'\" style='margin:5px;'>로그아웃</button>";
         }
     ?>
     </div>
-    <div class=btn>
-    <?php
-        if(!isset($_SESSION['id']) || !isset($_SESSION['name'])) {
-            echo "<button onclick=\"window.location.href='login.php'\">로그인</button> <button onclick=\"window.location.href='join.php'\">회원가입</button>";
-        } else {
-            echo "<button onclick=\"window.location.href='logout.php'\">로그아웃</button>";
-        }
-    ?>
+    <div class=footer>
+        안녕하세요
     </div>
 </div>
 </body>

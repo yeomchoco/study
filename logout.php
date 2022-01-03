@@ -1,6 +1,6 @@
 <?php
     session_start();
     session_destroy();
-    echo "<script>alert('로그아웃되었습니다!');</script>"
+    echo "<script>alert('다음에 또 만나요!');</script>"
 ?>
-<meta http-equiv="refresh" content="0;url=login.php">
+<meta http-equiv="refresh" content="0;url=greet.php">
