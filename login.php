@@ -4,6 +4,18 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
+    <script>
+        function auth(){
+            var id = '<?=$_SESSION['id']?>';
+            var name = '<?=$_SESSION['name']?>';
+            if(!id||!name){
+                alert('비회원입니다!');
+                return;
+            }
+            url = "mypage_check.php?id="+id;
+            window.open(url,"auth","width=600,height=400");
+        }
+    </script>
     <style>
         @font-face {
             font-family: 'DungGeunMo';

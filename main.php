@@ -5,8 +5,22 @@
     <meta charset="UTF-8">
     <title>Main</title>
     <script>
+        function auth_board(){
+            var id = '<?=$_SESSION['id']?>';
+            var name = '<?=$_SESSION['name']?>';
+            if(!id||!name){
+                alert('비회원입니다!');
+                return;
+            }
+            window.location.href='board.php';
+        }
         function auth(){
             var id = '<?=$_SESSION['id']?>';
+            var name = '<?=$_SESSION['name']?>';
+            if(!id||!name){
+                alert('비회원입니다!');
+                return;
+            }
             url = "mypage_check.php?id="+id;
             window.open(url,"auth","width=600,height=400");
         }
@@ -92,6 +106,7 @@
             position:relative;
             top:0.2%;
             font-size:23px;
+            z-index: 1;
         }
         .btn {
             text-align:right;
@@ -114,7 +129,7 @@
     <hr>
     <div class=nav>
         <ul>
-            <li><a href="board.php">Board</a></li>
+            <li><a href="javascript:void(0);" onclick="auth_board();">Board</a></li>
             <li><a href="qna.php">QnA</a></li>
             <li><a href="javascript:void(0);" onclick="auth();">Mypage</a></li>
         </ul>
@@ -125,7 +140,7 @@
     <div class=footer>
     <?php
         if(!isset($_SESSION['id']) || !isset($_SESSION['name'])) {
-            echo "비회원으로 접속중입니다";
+            echo "<a href='greet.php'>비회원으로 접속중입니다</a>";
         } else {
             $user_id = $_SESSION['id'];
             $user_name = $_SESSION['name'];

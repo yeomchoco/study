@@ -3,10 +3,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Main</title>
+    <title>Greet</title>
     <script>
+        function auth_board(){
+            var id = '<?=$_SESSION['id']?>';
+            var name = '<?=$_SESSION['name']?>';
+            if(!id||!name){
+                alert('비회원입니다!');
+                return;
+            }
+            window.location.href='board.php';
+        }
         function auth(){
             var id = '<?=$_SESSION['id']?>';
+            var name = '<?=$_SESSION['name']?>';
+            if(!id||!name){
+                alert('비회원입니다!');
+                return;
+            }
             url = "mypage_check.php?id="+id;
             window.open(url,"auth","width=600,height=400");
         }
@@ -112,7 +126,7 @@
     <hr>
     <div class=nav>
         <ul>
-            <li><a href="board.php">Board</a></li>
+            <li><a href="javascript:void(0);" onclick="auth_board();">Board</a></li>
             <li><a href="qna.php">QnA</a></li>
             <li><a href="javascript:void(0);" onclick="auth();">Mypage</a></li>
         </ul>
@@ -130,7 +144,7 @@
     ?>
     </div>
     <div class=footer>
-        안녕하세요
+        <a href='greet.php'>안녕하세요</a>
     </div>
 </div>
 </body>
