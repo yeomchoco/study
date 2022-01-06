@@ -124,14 +124,14 @@
             background-color:black;
             padding:16px;
             position:relative;
-            top:43.1%;
+            top:36%;
             font-size:23px;
             z-index: 1;
         }
         .btn {
             text-align:right;
             position:relative;
-            top:43.5%;
+            top:36.5%;
             z-index:-2;
         }
         button {
@@ -185,18 +185,7 @@
     </div>
     <div class=wrapper>
         <div class=info>MYPOST</div>
-        <table class=middle>
-        <thead>
-            <tr align=center>
-                <th width=70>Post ID</th>
-                <th width=300>제목</th>
-                <th width=120>작성자</th>
-                <th width=120>작성일</th>
-                <th width=70>조회수</th>
-                <th width=70>💕</th>
-            </tr>
-        </thead>
-       <?php
+        <?php
             include 'db.inc';
             session_start();
 
@@ -220,6 +209,20 @@
             $sql2 = "SELECT * FROM board WHERE id='$id' ORDER BY idx DESC limit $start, $per";
             $res2 = mysqli_query($conn, $sql2);
 
+            if($total_post==0){
+                echo "<h3>공감한 글이 없습니다.</h3>";
+            } else { ?>
+                <table>
+                    <thead>
+                        <tr align=center>
+                            <th width=70>Post ID</th>
+                            <th width=300>제목</th>
+                            <th width=120>작성자</th>
+                            <th width=120>작성일</th>
+                            <th width=70>조회수</th>
+                            <th width=70>👍🏻</th>
+                        </tr>
+                    </thead> <?php
             while($row = mysqli_fetch_array($res2)){
                 #좋아요 개수
                 $post_idx = $row['idx'];
@@ -242,6 +245,7 @@
             </tbody>
         <?php } ?>
         </table>
+    <?php } ?>
         <div class=page>
         <?php
             $total_page = ceil($total_post / $per);
@@ -264,10 +268,14 @@
         </div>
     </div>
     <div class=footer>
-        게시판
+        <?php
+            $user_id = $_SESSION['id'];
+            $user_name = $_SESSION['name'];
+            echo "$user_name($user_id)님의 공간입니다";
+        ?>
     </div>
     <div class=btn>
-        <button onclick="window.location.href='board_write.php'">글쓰기</button>
+        <button onclick="window.location.href='main.php'">메인으로</button>
     </div>
 </div>
 </body>

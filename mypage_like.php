@@ -227,7 +227,7 @@
                             <th width=120>작성자</th>
                             <th width=120>작성일</th>
                             <th width=70>조회수</th>
-                            <th width=70>💕</th>
+                            <th width=70>👍🏻</th>
                             <th width=70>취소</th>
                         </tr>
                     </thead> <?php
@@ -249,7 +249,7 @@
                     <td><?php echo $row['created'];?></td>
                     <td><?php echo $row['hit'];?></td>
                     <td><?php echo $res3?></td>
-                    <td><button onclick="location.href='board_unlike_ok.php?idx=<?=$post_idx?>'" style="width:28px;background:hotpink;">X</button></td>
+                    <td><button onclick="location.href='board_unlike_ok.php?idx=<?=$post_idx?>'" style="width:28px;background:hotpink;border:0">X</button></td>
                 </tr>
             </tbody>
         <?php } ?>
@@ -277,10 +277,14 @@
         </div>
     </div>
     <div class=footer>
-        게시판
+        <?php
+            $user_id = $_SESSION['id'];
+            $user_name = $_SESSION['name'];
+            echo "$user_name($user_id)님의 공간입니다";
+        ?>
     </div>
     <div class=btn>
-        <button onclick="window.location.href='board_write.php'">글쓰기</button>
+        <button onclick="window.location.href='main.php'">메인으로</button>
     </div>
 </div>
 </body>

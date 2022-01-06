@@ -13,7 +13,7 @@
                 return;
             }
             url = "mypage_check.php?id="+id;
-            window.open(url,"auth","width=600,height=400");
+            window.open(url,"auth","width=500,height=300");
         }
         function check_id(){
             var userid = document.getElementById("id").value;
@@ -23,6 +23,7 @@
                 window.open(url,"check","width=400,height=200");
             } else {
                 alert("아이디를 입력하세요.");
+                join_form.elements[0].focus();
             }
         }
         function decide(){
@@ -198,6 +199,9 @@
             text-align:center;
             font-size:18px;
         }
+        .join:disabled, .id:disabled {
+            background : lightgray;
+        }
     </style>
 </head>
 <body>
@@ -218,7 +222,7 @@
             <table>
                 <tr>
                     <th>ID</th>
-                    <td><input type="text" name="join_id" id="id" autofocus></td>
+                    <td><input type="text" class=id name="join_id" id="id" autofocus></td>
                 </tr>
                 <tr>
                     <th>❕</th>
@@ -250,7 +254,7 @@
                     <td><input type="text" name="join_address" id="address" onclick="find_address();" placeholder="Find your address.."></td>
                 </tr>
             </table>
-            <p><input type="button" value="가입하기" id="join_button" onclick="check_pw();" disabled=true></p>
+            <p><input type="button" value="가입하기" class=join id="join_button" onclick="check_pw();" disabled=true></p>
             </form>
             <?php } else {
                     $user_id = $_SESSION['id'];

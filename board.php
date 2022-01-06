@@ -193,7 +193,7 @@
                     <th width=120>작성자</th>
                     <th width=120>작성일</th>
                     <th width=70>조회수</th>
-                    <th width=70>💕</th>
+                    <th width=70>👍🏻</th>
                 </tr>
             </thead>
         <?php

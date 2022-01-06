@@ -52,7 +52,7 @@
                     qnaform.submit();
                 }
             } else {
-                if(window.confirm("공개글로 설정하시겠습니까?")){
+                if(window.confirm("공개글로 설정하시겠습니까? (공개글 설정 시 연락처 인증을 통해 문의글을 삭제할 수 있습니다.)")){
                     qnaform.submit();
                 }
             }

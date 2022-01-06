@@ -19,12 +19,26 @@
     <script>
         function find_address(){
             url = "address.php";
-            window.open(url,"address",'width=500, height=400, scrollbars=no, resizable=no');
+            window.open(url,"address",'width=500, height=500, scrollbars=no, resizable=no');
         }
         function auth(){
                 var id = '<?=$_SESSION['id']?>';
                 url = "mypage_check_pw.php";
                 window.open(url,"auth","width=600,height=400");
+        }
+        function change(){
+            document.getElementById('name').disabled = false;
+            document.getElementById('phone').disabled = false;
+            document.getElementById('email').disabled = false;
+            document.getElementById('address').disabled = false;
+            document.getElementById('change_form').elements[1].focus();
+            document.getElementById('change_btn').value = '확정하기';
+            document.getElementById('change_btn').style.background = 'hotpink';
+            document.getElementById('change_btn').setAttribute('onclick','decide()');
+        }
+        function decide(){
+            confirm('변경 사항을 확정하시겠습니까?');
+            document.getElementById('change_form').submit();
         }
     </script>
     <style>
@@ -118,7 +132,7 @@
             margin-bottom:7px;
         }
         input[type=button] {
-            background:darkgray;
+            background:black;
             color:white;
             font-size:15px;
             width:130px;
@@ -139,7 +153,7 @@
             width:350px;
             padding:10px;
             border:none;
-            box-shadow: 0 0 5px 3px lightgray;
+            box-shadow: 0 0 5px 3px hotpink;
             font-size:21px;
         }
         input[type=button] {
@@ -164,6 +178,10 @@
             text-align:left;
             font-size:23px;
         }
+        input:disabled {
+            box-shadow:0 0 5px 3px lightgray;
+            color:darkgray;
+        }
     </style>
 </head>
 <body>
@@ -179,7 +197,7 @@
     </div>
     <div id=wrapper>
         <div class=info>CHANGE</div>
-            <form method=post action=mypage_change_ok.php>
+            <form id=change_form method=post action=mypage_change_ok.php>
                 <table>
                     <tr>
                         <th>ID</th>
@@ -191,22 +209,22 @@
                     </tr>
                     <tr>
                         <th>이름</th>
-                        <td><input type=text name=name value='<?=$res['name']?>'></td>
+                        <td><input disabled type=text name=name id=name value='<?=$res['name']?>'></td>
                     </tr>
                     <tr>
                         <th>연락처</th>
-                        <td><input type=text name=phone value='<?=$res['phone']?>'></td>
+                        <td><input disabled type=text name=phone id=phone value='<?=$res['phone']?>'></td>
                     </tr>
                     <tr>
                         <th>Email</th>
-                        <td><input type=text name=email value='<?=$res['email']?>'></td>
+                        <td><input disabled type=text name=email id=email value='<?=$res['email']?>'></td>
                     </tr>
                     <tr>
                         <th>주소</th>
-                        <td><input type=text name=address id=address value='<?=$res['address']?>' onclick='find_address();'></td>
+                        <td><input disabled type=text name=address id=address value='<?=$res['address']?>' onclick='find_address();'></td>
                     </tr>
                 </table>
-                <input style="margin:40px;width:125px;background:darkgray;color:white;background:darkgray" type=submit value=변경하기>
+                <input style="margin:40px;width:125px;color:white;background:black" type=button onclick='change()' id=change_btn value=변경하기>
             </form>
     </div>
     <div class=footer>

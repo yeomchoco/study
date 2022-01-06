@@ -311,9 +311,9 @@
                 <button onclick="window.location.href='board_remove_ok.php?idx=<?=$res['idx']?>'">삭제</button> <?php
             } else {
                 if($res3){ ?>
-                    <button onclick="window.location.href='board_unlike_ok.php?idx=<?=$res['idx']?>'">좋아요 취소</button> <?php
+                    <button onclick="window.location.href='board_unlike_ok.php?idx=<?=$res['idx']?>'" style="background:darkgray;border:0">👍🏻 취소</button> <?php
                 } else { ?>
-                    <button onclick="window.location.href='board_like_ok.php?idx=<?=$res['idx']?>'">좋아요</button> <?php
+                    <button onclick="window.location.href='board_like_ok.php?idx=<?=$res['idx']?>'" style="background:hotpink;border:0;">👍🏻 공감</button> <?php
                 } 
             } ?>
         </div>
